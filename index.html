@@ -76,19 +76,21 @@
 
     <!-- JavaScript to check Twitch status and show Noty notification -->
     <script>
+        const clientId = '2oag632o0mp6n85h3mismr2ocsa1jip';
+const accessToken = '62ly1aqjnymr30sn6yga5xpxuo4yi9';
         // Function to check if the streamer is live on Twitch
         function checkLiveStatus() {
             const twitchUsername = document.getElementById('twitchUsername').value;
 
             // Replace with your Twitch Client ID
-            const clientId = process.env.TCLIENTID;
+
 
             // Make a request to the Twitch API
             fetch(`https://api.twitch.tv/helix/streams?user_login=${twitchUsername}`, {
                 method: 'GET',
                 headers: {
                     'Client-ID': clientId,
-                    'Authorization': `Bearer ${process.env.TAK}` // Replace with your access token
+                    'Authorization': `Bearer ${accessToken}` // Replace with your access token
                 }
             })
             .then(response => response.json())
@@ -110,14 +112,14 @@
         // Function to get the game name based on game ID
         function getGameName(gameId, twitchUsername) {
             // Replace with your Twitch Client ID
-            const clientId = '2oag632o0mp6n85h3mismr2ocsa1jip';
+            
 
             // Make a request to the Twitch API to get game information
             fetch(`https://api.twitch.tv/helix/games?id=${gameId}`, {
                 method: 'GET',
                 headers: {
                     'Client-ID': clientId,
-                    'Authorization': 'Bearer 62ly1aqjnymr30sn6yga5xpxuo4yi9' // Replace with your access token
+                    'Authorization': `Bearer ${accessToken}` // Replace with your access token
                 }
             })
             .then(response => response.json())
